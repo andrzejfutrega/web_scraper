@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista ofert</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        h2 {
+            color: #28a745;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        li a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        li a:hover {
+            text-decoration: underline;
+        }
+        .btn-back {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Udało się!</h1>
+        <a href="{{ url_for('index') }}" class="btn-back">Powrót do strony głównej</a>
+        <h2>{{ offers|length }} Ofert Pracy:</h2>
+        <ul>
+            {% for job_offer in offers %}
+            <li>
+                <strong>Tytuł:</strong> {{ job_offer.title }}<br>
+                <strong>Firma:</strong> {{ job_offer.company }}<br>
+                <strong>Pensja:</strong> {{ job_offer.salary }}<br>
+                <strong>Lokalizacja:</strong> {{ job_offer.location }}<br>
+                <a href="{{ job_offer.link }}">Link do strony</a>
+            </li>
+            {% endfor %}
+        </ul>
+        
+    </div>
+</body>
+</html>

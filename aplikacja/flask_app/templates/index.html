@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szukaj ofert pracy</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center my-4">Szukaj Ofert Pracy</h1>
+                <form method="post">
+                    <div class="form-group">
+                        <label for="keyword">Słowa kluczowe:</label>
+                        <input type="text" id="keyword" name="keyword" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Lokalizacja:</label>
+                        <input type="text" id="location" name="location" class="form-control" required>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" value="Szukaj" class="btn btn-primary">
+                        <a href="{{ url_for('search_history') }}" class="btn btn-secondary">Historia Wyszukiwania</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
