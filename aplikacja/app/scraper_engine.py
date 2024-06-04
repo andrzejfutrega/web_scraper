@@ -5,7 +5,7 @@ import aiohttp
 from bs4 import BeautifulSoup
 import pymongo
 import time
-from datetime import date
+
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
@@ -22,14 +22,6 @@ async def get_page_content(url):
                 print(f'Failed to retrieve the page. Status code: {response.status}')
             return None
 
-def print_job_info(job_info):
-    for title, company, salary, location, link in job_info:
-        print(f'Title: {title}')
-        print(f'Company: {company}')
-        print(f'Salary: {salary}')
-        print(f'Location: {location}')
-        print(f'Link: {link}')
-        print('-' * 40)
 
 def extract_job_information(job, url):
     (element, attribute) = selector_map[url]['title']
@@ -128,7 +120,7 @@ async def main(keyword, location, date):
         f'https://pracuj.pl/praca/{keyword};kw/{location};wp'
     ]
 
-    start_time = time.time()
+    
     page_contents = await fetch_all_content(urls)
     paired_args = list(zip(names, page_contents))
     
@@ -136,11 +128,8 @@ async def main(keyword, location, date):
         job_info_results = pool.map(parse_and_extract_job_information, paired_args)
 
     for job_info in job_info_results:
-        print_job_info(job_info)
         save_to_mongodb(job_info, collection)
     
-    end_time = time.time()
-    print(f"Time: {end_time - start_time:.2f} seconds")
 
 def check_for_signals():
     client = pymongo.MongoClient("mongodb://mongodb:27017/")
