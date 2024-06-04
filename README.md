@@ -1,6 +1,6 @@
 # Job Offer Python Web Scraper
 
-Simple job offer web-scraping python app. Contenerized using docker-compose, Flask interface, uses MongoDB.
+Simple job offer web-scraping python app. Contenerized using docker-compose. uses Flask and MongoDB.
 
 ![image](https://github.com/andrzejfutrega/web_scraper/assets/137655147/fe2d5c89-5444-4847-83d5-f9e88ed589e3)
 
